@@ -26,15 +26,25 @@
         .feature {
             width: 100%;
             display: grid;
-            grid-template-columns: 1fr 3fr;
+            grid-template-columns: 2fr 0.3fr 3fr;
             align-items: center;
             padding: 10px;
             text-align: center;
             font-size: 14px;
         }
 
+        .feature .desc {
+            text-align: left;
+        }
+
+        .feature code {
+            background-color: #6e6e6e;
+            padding: 3px 6px;
+            border-radius: 5px;
+        }
+
         .feature:hover {
-            background-color: #0000001f;
+            background-color: #0000002f;
         }
 
         .repo-link {
@@ -44,7 +54,7 @@
         }
 
         .repo-link a {
-            color: #fff;
+            color: inherit;
         }
     </style>
 </head>
@@ -53,14 +63,46 @@
     <div class="heading">
         <h1>The Best Utility Extension</h1>
     </div>
+    <hr style="margin: 10px 0; color: #6e6e6e;" color="#6e6e6e">
     <div class="details">
         <div class="heading">
             <h3>Shortcuts:</h3>
         </div>
         <div class="shortcuts">
             <div class="feature">
-                <span class="title">Image PiP:</span>
-                <span class="desc">Right Click on Image > <br> Open in PiP Window</span>
+                <span class="title">Image PiP</span>
+                :
+                <span class="desc">Right Click on Image > <br><code>Open in PiP Window</code> </span>
+            </div>
+            <div class="feature">
+                <span class="title">Speed up / down</span>
+                :
+                <span class="desc"><code>Shift</code> + <code>></code> / <code><</code></span>
+            </div>
+            <div class="feature">
+                <span class="title">Reset Speed</span>
+                :
+                <span class="desc"><code>Shift</code> + <code>0</code></span>
+            </div>
+            <div class="feature">
+                <span class="title">Volume Boost <br> up / down</span>
+                :
+                <span class="desc"><code>Shift</code> + <code>↑</code> / <code>↓</code></span>
+            </div>
+            <div class="feature">
+                <span class="title">Reset Volume Boost</span>
+                :
+                <span class="desc"><code>Shift</code> + <code>9</code></span>
+            </div>
+            <div class="feature">
+                <span class="title">Toggle <br> mute / unmute</span>
+                :
+                <span class="desc"><code>Shift</code> + <code>M</code></span>
+            </div>
+            <div class="feature">
+                <span class="title">Step Frame <br> forward / backward</span>
+                :
+                <span class="desc"><code>></code> / <code><</code> (no shift)</span>
             </div>
         </div>
     </div>

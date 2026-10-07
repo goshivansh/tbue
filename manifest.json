@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "TBUE",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "The Best Utility Extension you will ever use :)",
     "action": {
         "default_popup": "popup.html",
@@ -23,7 +23,9 @@
             ],
             "js": [
                 "content.js"
-            ]
+            ],
+            "run_at": "document_start",
+            "all_frames": true
         }
     ]
 }

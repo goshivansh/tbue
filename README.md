@@ -4,6 +4,14 @@ You don't need to get a new extension for every other feature you want to add to
 
 ### Features
 
+#### Images:
+
 - Picture in Picture for HTML Images
 
-More to come. 
+#### Videos
+
+- Playback Speed control beyond imposed limits (from `0.25x` to `8.0x`)
+- Volume boost (upto `500%`)
+- Frame Stepping 
+
+> More might be added.
