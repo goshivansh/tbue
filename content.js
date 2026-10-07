@@ -458,65 +458,6 @@ function showMessage(message) {
 }
 
 // ==============================
-// Help overlay (Shift + /)
-// ==============================
-//
-// Purely optional, built lazily on first use so it costs nothing
-// until someone actually asks for it. No separate options page /
-// popup.html - keeps the extension a single content script.
-
-let helpOverlay = null;
-
-function escCloseHandler(event) {
-    if (event.key === "Escape" && helpOverlay) {
-        closeHelp();
-    }
-}
-
-function closeHelp() {
-    if (!helpOverlay) return;
-    helpOverlay.remove();
-    helpOverlay = null;
-    document.removeEventListener("keydown", escCloseHandler, true);
-}
-
-function toggleHelp() {
-    if (helpOverlay) return closeHelp();
-
-    helpOverlay = document.createElement("div");
-    Object.assign(helpOverlay.style, {
-        position: "fixed",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        zIndex: "2147483647",
-        background: "rgba(0, 0, 0, 0.88)",
-        color: "#fff",
-        padding: "20px 24px",
-        borderRadius: "10px",
-        fontFamily: "Arial, sans-serif",
-        fontSize: "14px",
-        lineHeight: "1.7",
-        maxWidth: "320px",
-        boxShadow: "0 4px 24px rgba(0, 0, 0, 0.4)"
-    });
-
-    helpOverlay.innerHTML = `
-            <div style="font-weight:bold;font-size:16px;margin-bottom:10px;">Video Controls</div>
-            <div>Shift + . / , \u2014 Speed up / down</div>
-            <div>Shift + 0 \u2014 Reset speed</div>
-            <div>Shift + \u2191 / \u2193 \u2014 Volume boost up / down</div>
-            <div>Shift + 9 \u2014 Reset volume boost</div>
-            <div>Shift + M \u2014 Mute / unmute</div>
-            <div>. / , (no shift) \u2014 Step frame forward / back</div>
-            <div>Shift + / \u2014 Toggle this help</div>
-        `;
-
-    (document.documentElement || document.body).appendChild(helpOverlay);
-    document.addEventListener("keydown", escCloseHandler, true);
-}
-
-// ==============================
 // Keyboard controls
 // ==============================
 
@@ -542,7 +483,6 @@ window.addEventListener("keydown", event => {
             case "ArrowDown": changeVolumeBoost(-VOLUME_STEP); break;
             case "Digit9": resetVolumeBoost(); break;
             case "KeyM": toggleMute(); break;
-            case "Slash": toggleHelp(); break;
             default: handled = false;
         }
     } else {
