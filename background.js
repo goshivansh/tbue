@@ -7,10 +7,12 @@ chrome.runtime.onInstalled.addListener(() => {
 })
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-    if (info.menuItemId === "imagePiP") {
+    if (info.menuItemId === "imagePiP" && tab?.id) {
         chrome.tabs.sendMessage(tab.id, {
             action: "imagePiP",
-            imgUrl: info.srcUrl
+            imgUrl: info.srcUrl,
+        }, { frameId: 0 }).catch(error => {
+            console.error("Failed to send message:", error)
         })
     }
 })

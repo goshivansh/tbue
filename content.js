@@ -1,20 +1,35 @@
-chrome.runtime.onMessage.addListener(async (message) => {
+chrome.runtime.onMessage.addListener((message) => {
+    console.log('message received', message)
     if (message.action === "imagePiP") {
-
-        const img = document.createElement('img')
-        img.src = message.imgUrl
-
-        const stylesheet = document.createElement('style')
-        stylesheet.innerHTML = `
-        *{margin:0;padding:0;box-sizing:border-box;background:black;}
-        img{width:100%}
-        `
-
-        const pipWindow = await documentPictureInPicture.requestWindow()
-        pipWindow.document.head.append(stylesheet)
-        pipWindow.document.body.append(img)
+        openImagePiP(message.imgUrl).catch(error => {
+            console.error("Failed to open PiP window:", error)
+        })
     }
 })
+
+async function openImagePiP(imgUrl) {
+    const img = document.createElement("img")
+    img.src = imgUrl
+
+    const stylesheet = document.createElement("style")
+    stylesheet.innerHTML = `
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: black;
+        }
+
+        img {
+            width: 100%;
+        }
+    `
+
+    const pipWindow = await documentPictureInPicture.requestWindow()
+
+    pipWindow.document.head.append(stylesheet)
+    pipWindow.document.body.append(img)
+}
 
 // Vide Utilities
 
